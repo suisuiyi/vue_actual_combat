@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Vue示例</title>
+</head>
+
+<body>
+
+    <div id="app">
+        <!-- v-if  和 v-show 控制元素的显示与隐藏 -->
+        <p v-if="show"> 显示这个文本</p>
+
+        <!-- v-bind 控制元素的属性，比如设置url地址，图片等 -->
+        <a v-bind:href="url">这里是百度</a>
+        <br>
+        <img v-bind:src="imgUrl" >
+        <!-- v-on 绑定事件监听。这样我们就可以做一些数据交互了 -->
+        <!-- eg: 点击一次按钮，控制文本的隐藏与显示 -->
+        <button v-on:click="handleHidden">点击隐藏</button>
+        <input type="button" v-on:click="handleHidden" v-bind:value="buttonText">
+        <!-- 缩写形式 v-on:click 缩写成@click,   v-bind:缩写成: -->
+        <!-- 使用语法糖可以简化代码编写 -->
+        <input type="button" @click="handleHidden" :value="buttonText">
+
+
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            // el 挂在vue的实例
+            // data 是保存视图需要渲染的数据，可以赋个默认值
+            el: '#app',
+            data: {
+                name: '',
+                show: true,
+                buttonText: '点击隐藏',
+                url: 'https://www.baidu.com',
+                imgUrl: 'https://b.bdstatic.com/searchbox/icms/searchbox/img/ci_boy.png'
+            },
+            methods: {
+                handleHidden: function() {
+                    this.show = ! this.show;
+                    this.buttonText = this.show ? '点击隐藏' : '点击显示'
+                }
+            }
+        })
+
+    </script>
+
+
+</body>
+
+
+
+<!-- Q1: 每点击一次按钮如何修改按钮的标题 -->
+</html>
