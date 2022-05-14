@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Vue示例-计算属性缓存</title>
+</head>
+
+<body>
+
+    <div id="app">
+        {{ reverseText() }}
+        <p>{{  now }}</p>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                text: '123,456,789',
+                date: Date.now()
+            },
+            methods: {
+                reverseText: function() {
+                    //这里的this指向的是当前Vue实例
+                    return this.text.split(',').reverse().join(',');
+                }
+            },
+            computed: {
+                // 既然methods同样可以实现，为什么要使用计算属性呢？
+                // 计算属性是基于缓存的，即一个计算属性所依赖的数据发生变化时，它才会重新取值，所以text不改变，计算属性也就不会更新。
+                // 使用methods 还是 计算属性取决于你是否需要缓存，当遍历大数组或者需要做大量计算的时候，应当使用计算属性。
+                now: function() {
+                    return this.date;
+                },
+                reverseText: function () {
+                    return this.text.split(',').reverse().join(',');
+                }
+            }
+        })
+
+
+
+
+    </script>
+
+
+</body>
+
+
+
+</html>

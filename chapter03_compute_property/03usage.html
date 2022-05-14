@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Vue示例</title>
+</head>
+
+<body>
+    <div id="app1" style="background-color:aquamarine">
+        <p>组件1的数据：修改组件1的数据，组件2的数据动态发生变化</p>
+        <p>{{ text }}</p>
+        <input type="button" @click="changeText" value="改变数据">
+    </div>
+
+    <div id="app2" style="background-color:bisque;">
+        <p>组件2的数据:</p>
+        {{ reversedText }}
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script>
+        var app1 = new Vue({
+            el: '#app1',
+            data: {
+                text: '123,456,789'
+            },
+            methods: {
+                changeText: function() {
+                    this.text = this.text + ',111'
+                }
+            }
+        })
+        var app2 = new Vue({
+            el: '#app2',
+            computed: {
+                reversedText: function () {
+                    // 一个vue实例，可以引用另一个vue实例的数据做运算
+                    return app1.text.split(',').reverse().join(',');
+                }
+            }
+        })
+
+
+
+
+    </script>
+
+
+</body>
+
+</html>
