@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <title>v-bind在组件上的使用</title>
+</head>
+
+<body>
+
+    <div id="app">
+        <p>v-bind 在组件中的使用</p>
+        <my-component :class="{'active': isActive }"></my-component>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script>
+        // 组件的声明
+        Vue.component('my-component', {
+            template: '<p class="article">组件中的一些文本</p>'
+        });
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                isActive: true
+            }
+        })
+
+
+
+
+    </script>
+
+
+</body>
+
+</html>

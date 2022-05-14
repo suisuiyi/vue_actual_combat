@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <title>5.2条件渲染指令</title>
+</head>
+
+<body>
+
+    <div id="app">
+        <p v-if="status === 1">当status为1时显示该行</p>
+        <p v-else-if="status === 2">当status为2时显示该行</p>
+        <p v-else>否则显示该行</p>
+
+        <!-- 分割线------ -->
+<!-- 此处 type = 'name'   name 需要加单引号-->
+        <template v-if="type === 'name'">
+            <label>用户名： </label>
+            <input placeholder="请输入用户名" key="name-input">
+
+        </template>
+
+        <template v-else>
+
+            <label>邮箱： </label>
+            <!-- 切换的时候，如果不希望Vue.js复用已有的元素，可以对元素设置key属性，不过key值要是唯一的。 是页面唯一吗？？？ -->
+            <input placeholder="请输入邮箱" key="mail-input">
+        </template>
+
+        <button @click="handleToggleClick">切换输入类型</button>
+
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                status: 1,
+                type: 'name'
+            },
+            methods: {
+                handleToggleClick: function () {
+                    this.type = this.type === 'name' ? 'mail' : 'name';
+                }
+            }
+
+        })
+
+
+
+
+    </script>
+
+
+</body>
+
+</html>
