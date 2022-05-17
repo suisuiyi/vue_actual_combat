@@ -60,7 +60,11 @@
                 }
             }
            
-        })
+        });
+        // 过滤数据
+        app.books = app.books.filter(function (item) {
+            return item.name.match(/JavaScript/);
+        });
 
 
 
