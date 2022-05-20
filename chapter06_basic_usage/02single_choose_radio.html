@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <title>单选框</title>
+</head>
+
+<body>
+
+    <div id="app">
+        <!-- 说明： name   属性表示 <input> 元素的名称
+                   value  属性表示 <input> 元素value的值
+                   id  
+        
+        如果要实现点击单选框。 则lable的for属性值，要需与input元素的value值保持一致
+
+        如果要是实现点击label, 选中该值，需指定id， 用于区分input元素
+        -->
+
+
+        <input type="radio" v-model="picked"  id="html" value="html">
+        <label for="html">HTML</label>
+        <br>
+        <input type="radio" v-model="picked"  id="css" value="css" >
+        <label for="css">CSS</label>
+        <br>
+        <input type="radio" v-model='picked'  id="js" value="js">
+        <label for="js">JavaScript</label>
+        <br>
+
+        <p>选中的选项是：{{ picked }}</p>
+
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                picked: 'js'
+            }
+        })
+
+
+
+
+    </script>
+
+
+</body>
+
+</html>

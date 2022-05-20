@@ -1,0 +1,47 @@
+[v-cloak] {
+    display: none;
+}
+
+table {
+    border: 1px solid #e9e9e9;
+    /* 
+    --------------------------------------------------------
+    border-collapse 为表格设置合并边框模型: collapse 是合并的意思。
+    枚举值：
+    separate： 默认值，边框会被分开，这样边框会显示的比较粗
+    collapse、边框合并
+    inherit : 从父元素继承 border-collapse的值
+
+    --------------------------------------------------------
+     empty-cells: 用于是否显示表格中的空单元格
+     show --显示
+     hidden -- 隐藏
+     inherit: ...
+
+     */
+    border-collapse: collapse; 
+    border-spacing: 0;
+    empty-cells: show;
+}
+
+th, td {
+    padding: 8px 16px;
+    border: 1px solid #e9e9e9;
+    text-align: left;
+}
+
+th {
+    background-color: #f7f7f7;
+    color: #5c6b77;
+    font-weight: 600;
+    /*
+    white-space: 指定元素内的空白怎样处理
+    - nowrap: 文本不会换行，知道遇到<br>为止
+    - normal： 默认，空白会被浏览器忽略
+    - pre: 空白会被浏览器保留
+    - pre-wrap: 保留空白符序列，但是正常进行换行。
+    - pre-line: 合并空白符序列，但是保留换行符
+    - inherit
+        */
+    white-space: nowrap;
+}

@@ -6,19 +6,22 @@ var app = new Vue({
                 id: 1,
                 name: 'iPhone 7',
                 price: 6188,
-                count: 1
+                count: 1,
+                isSelect: false
             },
             {
                 id: 2,
                 name: 'iPad Pro',
                 price: 5888,
-                count: 1
+                count: 1,
+                isSelect: false
             },
             {
                 id: 3,
                 name: 'MacBook Pro',
                 price: 21488,
-                count: 1
+                count: 1,
+                isSelect: false
             }
         ]
 
@@ -28,7 +31,9 @@ var app = new Vue({
         totalPrice: function() {
             var total = 0;
             for(var i = 0; i < this.list.length; i++) {
-                total += this.list[i].price * this.list[i].count; 
+                if(this.list[i].isSelect === true) {
+                    total += this.list[i].price * this.list[i].count; 
+                }
             }
 
             // return total.toString().replace(/\B(? = (\d{3})+$)/g, ', ');
@@ -48,6 +53,11 @@ var app = new Vue({
 
         handleRemove: function(index) {
             this.list.splice(index, 1);
+        },
+        selectAll: function() {
+            for(var i = 0; i < this.list.length; i++) {
+                this.list[i].isSelect = true
+            }
         }
 
 

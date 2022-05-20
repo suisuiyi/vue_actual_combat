@@ -15,6 +15,7 @@
                     <!-- tr 代表表格的一行 -->
                     <tr>
                         <!--  //表头使用th 定义 -->
+                        <th><input type="button" @click="selectAll" value="全选"></th>
                         <th>序号</th>   
                         <th>商品名称</th>
                         <th>商品单价</th>
@@ -26,6 +27,7 @@
 
                 <tbody>
                     <tr v-for="(item, index) in list" >
+                        <td> <input type="checkbox" checked="{'checked': item.isSelect === true}"></td>
                         <td>{{ index + 1 }}</td>
                         <td>{{ item.name }}</td>
                         <td>{{ item.price }}</td>
