@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <title>6.2 绑定值</title>
+</head>
+
+<body>
+
+    <div id="app" v-cloak>
+        <!-- 在选中时，v-model的值 === app.value的值，所以picked会展示为123 -->
+        <input type="radio" v-model="picked" :value="value">
+        <label >单选按钮</label>
+
+        <p>{{ picked }}</p>
+        <p>{{ value }}</p>
+
+        <hr>
+        <!-- 未勾选是 toggle的值是b,  勾选时 toggle的值是a -->
+        <input type="checkbox" v-model="toggle" :true-value="value1" :false-value="value2">
+        <label >复选框</label>
+        <p>{{ toggle }}</p>
+        <p>{{ value1 }}</p>
+        <p>{{ value2 }}</p>
+
+        <hr>
+        <!-- 选择列表。 select是一个对象 -->
+        <select v-model="selected">
+            <option :value="{ number: 123 }">123</option>
+        </select>
+        <p>选中的值是： {{ selected }}</p>
+
+
+
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                picked: false,
+                value: 123,
+                toggle: false,
+                value1: 'a',
+                value2: 'b',
+                selected: ''
+            }
+        })
+
+
+
+
+    </script>
+
+
+</body>
+
+</html>
