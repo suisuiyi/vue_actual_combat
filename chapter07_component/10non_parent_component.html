@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <title>7.3.3非父子组件通信:中央事件总线bus(1)</title>
+     
+</head>
+
+<body>
+
+    <div id="app">
+        <h5>非父子组件通信:   中央事件总线bus(1)</h5>
+        <hr>
+
+        {{ message }}
+        <component-a></component-a>
+        <!-- 1、 声明一个空的Vue实例 -->
+        <!-- 2、 bus.$emit('事件名a'， 参数) 将子组件的事件传递出去 -->
+        <!-- 3、 bus.$on（'事件名a'，function(参数)）{} 在外部组件接收传递的事件。 -->
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script>
+        var bus = new Vue();
+        Vue.component('component-a', {
+            template: '<button @click="handleEvent">传递事件</button>',
+            methods: {
+                handleEvent: function() {
+                    bus.$emit('on-message', '来自组件component-a的内容')
+                }
+            }
+        })
+
+
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: '123,456,789'
+            },
+            mounted: function() {
+                var _this = this;
+                // 实例初始化的时候，监听来自bus实例的事件
+                bus.$on('on-message', function(msg) {
+                    _this.message = msg;
+                });
+            }
+        })
+
+
+
+
+    </script>
+
+
+</body>
+
+</html>
