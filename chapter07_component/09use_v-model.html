@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <title>7.3.2使用v-model 做双向数据绑定: 重要</title>
+</head>
+
+<body>
+
+    <div id="app">
+        <p>总数： {{ total }}</p>
+        <my-component v-model="total"></my-component>
+        <button @click="handleReduce">-1</button>
+    </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+    <script>
+        Vue.component('my-component', {
+            props: ['value'],
+            template: '<input :value="value" @input="updateValue">',
+
+            methods: {
+                updateValue: function(event) {
+                    // 这个要关注一下
+                    this.$emit('input', event.target.value);
+                }
+            }
+        })
+        var app = new Vue({
+            el: '#app',
+            data: {
+                total: 0
+            },
+            methods: {
+                handleReduce: function() {
+                    this.total--;
+                }
+            }
+           
+        })
+
+
+
+
+    </script>
+
+
+</body>
+
+</html>
