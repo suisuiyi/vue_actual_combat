@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>数字输入框组件</title>
+</head>
+<body>
+    <div id="app">
+        <input-number v-model="value" :max="10" :min="0"></input-number>
+    </div>
+
+
+    <!-- 引用外部的js文件 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <!-- 后面这个两个js的引用顺序有关系，要先引用组件，在引用vue实例 -->
+    <script src="input-number.js"></script>
+    <script src="index.js"></script>
+
+</body>
+</html>
