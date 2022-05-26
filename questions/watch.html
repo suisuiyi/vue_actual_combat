@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <title>v-bind与v-model</title>
+</head>
+
+<body>
+
+    <div id="app" v-cloak>
+        <!-- watch 来响应数据的变化 -->
+        <input type="text" v-model="cityName">
+    </div>
+
+    <!-- cdn的方式偶尔会卡，把js引入到本地 -->
+    <script src="vue.js"></script>
+    <script>
+        // watch 是一个对象，一定要当对象进行使用。对象则有 key 和  value
+    
+        //key 代表的是需要监控的东西，比如：路由的变化或者data中某个变量 
+        //value： 有三种：
+        // 1、函数, 即当监控的key 发生变化是，需要执行的函数， 第一个是当前值，第二个是之前的值。
+        // 2、函数名： 该函数名需要单引号来包裹
+        // 3、包括选项的对象：
+        /*
+             ✅a、第一个handler：其值是一个回调函数。 即监听到变化时应该执行的函数。
+             b、第二个是deep: 其值是true或者false; 确认是否需要深入监听。（一般监听是不能监听到对象属性值变化的，数组的值变化可以监听到）
+             c、第三个是immediate: 其值是true或者false, 确认是否以当前的初始值执行handle的函数。
+        */
+        var app = new Vue({
+            el: '#app',
+            data: {
+               cityName: '上海'
+            },
+            watch: {
+                cityName: function(newVal, oldVal){
+                    console.log('当前值-->' + oldVal);
+                    console.log('变化后的值-->' + newVal);
+
+                }
+            }
+
+        })
+    </script>
+
+
+</body>
+
+</html>
