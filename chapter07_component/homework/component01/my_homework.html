@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>开发一个数字输入组件</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 组件的要求是 仅支持输入0~10之间的整数 -->
+        <my-input-numbers :max="10" :min="0" v-model="value"></my-input-numbers>
+
+    </div>
+    <script src="../../../questions/vue.js"></script>
+    <script>
+        // 注册一个组件
+        Vue.component('my-input-numbers', {
+            template: '<div class="my-input-numbers">\
+            <input type="text" :value="currentValue">\
+            <button @click="handleDown" :disable="currentValue <= min">-</button>\
+            <button @click="handleUp" :disable="currentValue >= max">+</button>\
+        </div>',
+
+        props: {
+            // 限制输入框的最大值和最小值
+            max: {
+                type: Number,
+                default: Infinity
+            },
+            min: {
+                type: Number,
+                default: -Infinity
+            },
+            // 输入框的内容,外部的父组件传入的值
+            value: {
+                type: Number,
+                default: 0
+            }
+        },
+        data: function() {
+            return {
+                // 从父组件中传递过来的值（用户输入的值），有可能不符合要求，所以需要对数据做监控
+                currentValue: this.value
+            }
+        },
+
+        mounted: function() {
+            // 组件首次加载的时候，初始化一次数据
+            this.updateValue(this.value);
+        },
+
+        watch: {
+            // val是v-model值的变化，当value变化时，更新子组件里的currentValue
+            value: function(val) {
+                this.updateValue(val)
+            }
+        },
+
+        methods: {
+            // 通过父组件输入的值，点击按钮要对其进行处理
+            handleDown: function() {
+                if (this.currentValue <= this.min) return;
+                this.currentValue -= 1;
+                
+            },
+            handleUp: function() {
+                if (this.currentValue >= 10) return;
+                
+                this.currentValue += 1;
+
+            },
+
+            updateValue: function(val) {
+                if (val > this.max) val = this.max;
+                if (val < this.min) val = this.min;
+                this.currentValue = val;
+            }
+
+
+
+        }
+
+
+        });
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                value: 5
+            }
+        })
+    </script>
+</body>
+
+</html>
