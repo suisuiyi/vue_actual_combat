@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>实战2： 标签页开发</title>
+    <link rel="stylesheet" href="style.css", type="text/css">
+</head>
+<body>
+    <div id="app" v-cloak>
+        <tabs v-model="activeKey"> 
+            <pane label="fat" name="1">
+                fat是用于测试的环境。
+            </pane>
+            <pane label="pre" name="2">
+                pre是用于验收的环境。
+            </pane>
+            <pane label="uat" name="3">
+                uat是用于产品进行验收的环境。
+            </pane>
+            <pane label="pro" name="4">
+                pro是用户真实使用环境
+            </pane>
+        </tabs>
+    </div>
+    <!-- 一定要先引入vue.js 然后在引入其他js文件 -->
+    <script src="../../../questions/vue.js"></script>
+    <script src="pane.js"></script>
+    <script src="tab.js"></script>
+
+    <script text="text/javascript">
+        var app = new Vue({
+            el: '#app',
+            data: {
+                activeKey: '1'
+            }
+        })
+    </script>
+</body>
+</html>
