@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <title>父子组件的通信</title>
+</head>
+
+<body>
+
+    <div id="app" >
+        <p>这是是APP组件 (父组件)</p>
+        <Home content="父组件传来的值: hello"></Home>
+    </div>
+    <script src="../vue.js"></script>
+
+
+    <script>
+
+        //注册组件
+        Vue.component('Home', {
+            props: ['content'],
+            template: ' <div class="home" style="border: 1px solid blue">\
+                <p>这是Home组件 (子组件)</p>\
+                <p>{{ content }}</p>\
+                </div>'
+        })
+        var app = new Vue({
+            el: '#app',
+            data: {
+                text: ''
+            }
+        })
+
+
+
+
+    </script>
+
+    <style>
+        #app {
+            font-family: 'Avenir', Helvetica, Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            color: #2c3e50;
+            display: inline-block;
+            border: 1px solid orange;
+            padding: 10px;
+        }
+
+    </style>
+
+
+</body>
+
+</html>

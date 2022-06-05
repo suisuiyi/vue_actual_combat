@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <title>父子组件的通信</title>
+</head>
+
+<body>
+
+    <div id="app" >
+        <p>这是是APP组件 (父组件)</p>
+        <Home @child-click-color="showColor"></Home>
+        <p>子组件点击的是: {{ color }}</p>
+
+    </div>
+    <script src="../vue.js"></script>
+
+
+    <script>
+
+        //注册组件
+        Vue.component('Home', {
+            template: ' <div class="home" style="border: 1px solid blue">\
+                <p>这是是Home组件 (子组件)</p>\
+                <button @click="handleClick(\'red\')" >red</button>\
+                <button @click="handleClick(\'blue\')">blue</button>\
+                </div>',
+            methods: {
+                handleClick: function(val) {
+                    //不带参数的传递 
+
+                    // if(val == 'red') {
+                    //     // $emit注意这里不要使用驼峰命名法。
+                    //     this.$emit('child-click-red');
+                    // }
+                    // else if (val == 'blue'){
+                    //     this.$emit('child-click-blue');
+                    // }
+
+                    //带有参数传递
+                    this.$emit('child-click-color', val);
+
+                } 
+            }
+        })
+        var app = new Vue({
+            el: '#app',
+            data: {
+                color: 'default',
+            },
+            methods: {
+                showColor: function(val) {
+                    this.color = val;
+                }
+            }
+        })
+
+
+
+
+    </script>
+
+    <style>
+        #app {
+            font-family: 'Avenir', Helvetica, Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            color: #2c3e50;
+            display: inline-block;
+            border: 1px solid orange;
+            padding: 10px;
+        }
+
+    </style>
+
+
+</body>
+
+</html>
