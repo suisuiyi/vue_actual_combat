@@ -7,40 +7,38 @@
 
 <body>
 
-    <div id="app">
-        <div id="div" v-if="showDiv">这是一段文本</div>
-        <button @click="getText">获取div内容</button>
-    </div>
+<div id="app">
+    <div id="div" v-if="showDiv">这是一段文本</div>
+    <button @click="getText">获取div内容</button>
+</div>
 
 
-    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-    <script>
-        var app = new Vue({
-            el: '#app',
-            data: {
-                showDiv: false
-            },
-            methods: {
-                getText: function() {
-                    // Vue在观察到数据变化时并不是直接更新DOM,而是开启一个队列，并缓冲在同一个事件循环中发生的所有数据改变。
-                    // 在缓冲时会去除重复数据，从而避免不必要的计算和DOM操作。
-                    // 然后在下一个事件循环tick中，Vue刷新队列并执行实际（已去重）的工作。
-                
-                    // 此时div并没有被创建出来，直到下一个Vue事件循环时，才开始创建。
-                    // $nextTick就是用来知道什么时候DOM更新完成的。
-                    this.showDiv = true;
-                    this.$nextTick(function() {
-                        var text = document.getElementById('div').innerHTML;
-                        console.log(text)
-                    })
-                }
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            showDiv: false
+        },
+        methods: {
+            getText: function () {
+                // Vue在观察到数据变化时并不是直接更新DOM,而是开启一个队列，并缓冲在同一个事件循环中发生的所有数据改变。
+                // 在缓冲时会去除重复数据，从而避免不必要的计算和DOM操作。
+                // 然后在下一个事件循环tick中，Vue刷新队列并执行实际（已去重）的工作。
+
+                // 此时div并没有被创建出来，直到下一个Vue事件循环时，才开始创建。
+                // $nextTick就是用来知道什么时候DOM更新完成的。
+                this.showDiv = true;
+                this.$nextTick(function () {
+                    var text = document.getElementById('div').innerHTML;
+                    console.log(text)
+                })
             }
-        })
+        }
+    })
 
 
-
-
-    </script>
+</script>
 
 
 </body>

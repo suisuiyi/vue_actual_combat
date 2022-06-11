@@ -28,34 +28,34 @@ var app = new Vue({
     },
 
     computed: {
-        totalPrice: function() {
+        totalPrice: function () {
             var total = 0;
-            for(var i = 0; i < this.list.length; i++) {
-                if(this.list[i].isSelect === true) {
-                    total += this.list[i].price * this.list[i].count; 
+            for (var i = 0; i < this.list.length; i++) {
+                if (this.list[i].isSelect === true) {
+                    total += this.list[i].price * this.list[i].count;
                 }
             }
 
             // return total.toString().replace(/\B(? = (\d{3})+$)/g, ', ');
             return total.toString();
         }
- 
+
     },
 
     methods: {
-        handleReduce: function(index) {
+        handleReduce: function (index) {
             this.list[index].count--;
         },
 
-        handleAdd: function(index) {
+        handleAdd: function (index) {
             this.list[index].count++;
         },
 
-        handleRemove: function(index) {
+        handleRemove: function (index) {
             this.list.splice(index, 1);
         },
-        selectAll: function() {
-            for(var i = 0; i < this.list.length; i++) {
+        selectAll: function () {
+            for (var i = 0; i < this.list.length; i++) {
                 this.list[i].isSelect = true
             }
         }

@@ -7,63 +7,61 @@
 
 <body>
 
-    <div id="app">
-        总价： {{ price }}
-    </div>
+<div id="app">
+    总价： {{ price }}
+</div>
 
 
-    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-    <script>
-        var app = new Vue({
-            el: '#app',
-            data: {
-                package1: [
-                    {
-                        name: 'iPhone 13',
-                        price: 7199,
-                        count: 2
-                    },
-                    {
-                        name: 'iPad',
-                        price: 2888,
-                        count: 1
-                    }
-
-                ],
-
-                package2: [
-                    {
-                        name: 'apple',
-                        price: 3,
-                        count: 5
-                    },
-                    {
-                        name: 'banana',
-                        price: 2,
-                        count: 10
-                    }
-
-                ]
-            },
-            computed: {
-                price: function() {
-                    var sumPrice = 0;
-                    for(var i = 0; i < this.package1.length; i++) {
-                        sumPrice += this.package1[i].price * this.package1[i].count
-                    }
-                    for(var i = 0; i < this.package2.length; i++) {
-                        sumPrice += this.package2[i].price * this.package2[i].count
-                    }
-
-                    return sumPrice;
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            package1: [
+                {
+                    name: 'iPhone 13',
+                    price: 7199,
+                    count: 2
+                },
+                {
+                    name: 'iPad',
+                    price: 2888,
+                    count: 1
                 }
+
+            ],
+
+            package2: [
+                {
+                    name: 'apple',
+                    price: 3,
+                    count: 5
+                },
+                {
+                    name: 'banana',
+                    price: 2,
+                    count: 10
+                }
+
+            ]
+        },
+        computed: {
+            price: function () {
+                var sumPrice = 0;
+                for (var i = 0; i < this.package1.length; i++) {
+                    sumPrice += this.package1[i].price * this.package1[i].count
+                }
+                for (var i = 0; i < this.package2.length; i++) {
+                    sumPrice += this.package2[i].price * this.package2[i].count
+                }
+
+                return sumPrice;
             }
-        })
+        }
+    })
 
 
-
-
-    </script>
+</script>
 
 
 </body>

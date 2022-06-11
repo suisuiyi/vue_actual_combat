@@ -6,66 +6,66 @@
 </head>
 
 <body>
-    <!-- option是备选项目，如果含有value属性则v-model会优先匹配value的值，然后再匹配 option里的text里的值。
-    其中 option里text里的值，是用来在选择框里展示。
-    -->
-    <div id="app">
-        <h5>单选</h5>
-        <select v-model="selected" >
-            <option >html</option>
-            <option value="css" >Css</option>
-            <option >js</option>
-        </select>
+<!-- option是备选项目，如果含有value属性则v-model会优先匹配value的值，然后再匹配 option里的text里的值。
+其中 option里text里的值，是用来在选择框里展示。
+-->
+<div id="app">
+    <h5>单选</h5>
+    <select v-model="selected">
+        <option>html</option>
+        <option value="css">Css</option>
+        <option>js</option>
+    </select>
 
-        <p>选择的项目是：{{ selected }}</p>
+    <p>选择的项目是：{{ selected }}</p>
 
-        <hr>
-        <h5>多选框: 需按住command键，再点选才可以多选</h5>
-        <select v-model="multi_selected" multiple>
-            <option >html</option>
-            <option value="css" >Css</option>
-            <option >js</option>
-        </select>
+    <hr>
+    <h5>多选框: 需按住command键，再点选才可以多选</h5>
+    <select v-model="multi_selected" multiple>
+        <option>html</option>
+        <option value="css">Css</option>
+        <option>js</option>
+    </select>
 
-        <p>选择的项目是：{{ multi_selected }}</p>
+    <p>选择的项目是：{{ multi_selected }}</p>
 
 
-        <hr>
-        <h5>实际中的使用，一般是遍历option来生成</h5>
-        <select v-model="options_selected">
-            <option v-for="opt in options" :value="opt.value"> {{ opt.text }} </option>
-        </select>
-        <p>选择的项目是：{{ options_selected }}</p>
+    <hr>
+    <h5>实际中的使用，一般是遍历option来生成</h5>
+    <select v-model="options_selected">
+        <option v-for="opt in options" :value="opt.value"> {{ opt.text }}</option>
+    </select>
+    <p>选择的项目是：{{ options_selected }}</p>
 
-    </div>
-    
-    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-    <script>
-        var app = new Vue({
-            el: '#app',
-            data: {
-                selected: 'html',
-                multi_selected: ['html','js'],
-                options_selected: 'html',
-                options: [
-                    {
-                        text: 'HTML',
-                        value: 'html'
-                    },
-                    {
-                        text: 'CSS',
-                        value: 'css'
-                    },
-                    {
-                        text: 'JavaScript',
-                        value: 'js' 
-                    }
+</div>
 
-                ]
-            }
-        })
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            selected: 'html',
+            multi_selected: ['html', 'js'],
+            options_selected: 'html',
+            options: [
+                {
+                    text: 'HTML',
+                    value: 'html'
+                },
+                {
+                    text: 'CSS',
+                    value: 'css'
+                },
+                {
+                    text: 'JavaScript',
+                    value: 'js'
+                }
 
-    </script>
+            ]
+        }
+    })
+
+</script>
 
 
 </body>

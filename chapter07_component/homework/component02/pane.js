@@ -4,7 +4,7 @@ Vue.component('pane', {
     <div class="pane" v-show="show"> \
         <slot></slot>\
      </div>',
-     props: {
+    props: {
         name: {
             type: String
         },
@@ -13,13 +13,13 @@ Vue.component('pane', {
             default: ''
         }
     },
-    data: function() {
+    data: function () {
         return {
             show: true
         }
     },
     methods: {
-        updateNav () {
+        updateNav() {
             this.$parent.updateNav();
         }
     },
@@ -29,7 +29,7 @@ Vue.component('pane', {
         }
     },
 
-    mounted () {
+    mounted() {
         this.updateNav();
     }
 })

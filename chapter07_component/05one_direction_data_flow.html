@@ -7,50 +7,47 @@
 
 <body>
 
-    <div id="app">
-        <my-component :init-count="1"></my-component>
+<div id="app">
+    <my-component :init-count="1"></my-component>
 
-        <my-component01 :width="100"></my-component01>
-    </div>
+    <my-component01 :width="100"></my-component01>
+</div>
 
 
-    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-    <script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script>
 
-        Vue.component('my-component', {
-            props: ['initCount'],
-            template: '<div> {{ count }}</div>',
-            data: function() {
+    Vue.component('my-component', {
+        props: ['initCount'],
+        template: '<div> {{ count }}</div>',
+        data: function () {
+            return {
+                count: this.initCount
+            }
+        }
+    })
+
+    Vue.component('my-component01', {
+        props: ['width'],
+        template: '<div :style="style"> 组件内容</div>',
+        computed: {
+            style: function () {
                 return {
-                    count: this.initCount
+                    width: this.width + 'px'
                 }
             }
-        })
+        }
 
-        Vue.component('my-component01', {
-            props: ['width'],
-            template: '<div :style="style"> 组件内容</div>',
-            computed: {
-                style: function(){
-                    return {
-                        width: this.width + 'px'
-                    }
-                }
-            }
-            
-        })
+    })
 
 
-        var app = new Vue({
-            el: '#app',
-            data: {
-            }
-        })
+    var app = new Vue({
+        el: '#app',
+        data: {}
+    })
 
 
-
-
-    </script>
+</script>
 
 
 </body>

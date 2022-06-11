@@ -29,7 +29,7 @@
 .tabs-tab-active::before {
     content: '';
     display: block;
-    height:  1px;
+    height: 1px;
     background-color: #3399ff;
     position: absolute;
     top: 0;
@@ -38,6 +38,6 @@
 
 }
 
-.tabs-content{
+.tabs-content {
     padding: 8px 0;
 }

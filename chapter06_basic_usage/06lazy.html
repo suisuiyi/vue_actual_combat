@@ -7,56 +7,53 @@
 
 <body>
 
-    <div id="app">
-        <!-- v-model 也有修饰符，用于控制数据同步的时机 -->
-        <!-- 使用lazy后，message的内容不是实时改变的，而是在失焦或按回车的时候才更新 -->
-        <label > .lazy修饰符</label>
-        <br>
-        <br>
-        <input type="text" v-model.lazy="message">
-        <p>输入的内容是：{{ message }}</p>
-        <p>输入的数字的类型是：{{ typeof message }}</p>
+<div id="app">
+    <!-- v-model 也有修饰符，用于控制数据同步的时机 -->
+    <!-- 使用lazy后，message的内容不是实时改变的，而是在失焦或按回车的时候才更新 -->
+    <label> .lazy修饰符</label>
+    <br>
+    <br>
+    <input type="text" v-model.lazy="message">
+    <p>输入的内容是：{{ message }}</p>
+    <p>输入的数字的类型是：{{ typeof message }}</p>
 
 
-        <hr>
-        <label >.number修饰符</label>
-        <!-- 可以将输入转换成Number类型 -->
-        <br>
-        <br>
-        <input type="text" v-model.number="number">
-        <p>输入的数字是：{{ number }}</p>
-        <p>输入的数字类型是：{{ typeof number }}</p>
+    <hr>
+    <label>.number修饰符</label>
+    <!-- 可以将输入转换成Number类型 -->
+    <br>
+    <br>
+    <input type="text" v-model.number="number">
+    <p>输入的数字是：{{ number }}</p>
+    <p>输入的数字类型是：{{ typeof number }}</p>
 
 
-
-        <hr>
-        <label >.trim修饰符</label>
-        <!-- : 可以自动过滤输入的首尾空格 -->
-        <br>
-        <br>
-        <input type="text" v-model.trim="trim">
-        <p>输入的内容是：{{trim}}</p>
-
-
-    </div>
+    <hr>
+    <label>.trim修饰符</label>
+    <!-- : 可以自动过滤输入的首尾空格 -->
+    <br>
+    <br>
+    <input type="text" v-model.trim="trim">
+    <p>输入的内容是：{{trim}}</p>
 
 
-    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-    <script>
-        var app = new Vue({
-            el: '#app',
-            data: {
-                message: '',
-                number: 1234566,
-                trim: ''
-            }
-        
-        })
+</div>
 
 
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            message: '',
+            number: 1234566,
+            trim: ''
+        }
+
+    })
 
 
-    </script>
+</script>
 
 
 </body>

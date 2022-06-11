@@ -7,38 +7,36 @@
 
 <body>
 
-    <div id="app">
-        <my-component message="来自父组件的数据" info="hello" warning-text="提示信息"></my-component>
-        <!--     组件的数据来自动态输入    -->
-        <hr>
-        <label> 组件的数据来自输入</label>
-        <br>
-        <input type="text" v-model="parentMessage">
-        <my-component :message="parentMessage"></my-component>
-    </div>
+<div id="app">
+    <my-component message="来自父组件的数据" info="hello" warning-text="提示信息"></my-component>
+    <!--     组件的数据来自动态输入    -->
+    <hr>
+    <label> 组件的数据来自输入</label>
+    <br>
+    <input type="text" v-model="parentMessage">
+    <my-component :message="parentMessage"></my-component>
+</div>
 
 
-    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-    <script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script>
 
-        Vue.component('my-component', {
-            // props 声明要被传递的数据
-            props: ['message', 'info', 'warningText', 'parentMessage'],
-            template: '<div>{{ message }}  {{ info }} {{ warningText }}  {{ parentMessage }}</div>'
-        })
-        
-
-        var app = new Vue({
-            el: '#app',
-            data: {
-                parentMessage: '' 
-            }
-        })
+    Vue.component('my-component', {
+        // props 声明要被传递的数据
+        props: ['message', 'info', 'warningText', 'parentMessage'],
+        template: '<div>{{ message }}  {{ info }} {{ warningText }}  {{ parentMessage }}</div>'
+    })
 
 
+    var app = new Vue({
+        el: '#app',
+        data: {
+            parentMessage: ''
+        }
+    })
 
 
-    </script>
+</script>
 
 
 </body>

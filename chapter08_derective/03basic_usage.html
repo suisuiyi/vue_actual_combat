@@ -7,31 +7,28 @@
 
 <body>
 
-    <div id="app">
-        <div v-test="{ msg: 'hello', name: 'Aresn' }"></div>
-    </div>
+<div id="app">
+    <div v-test="{ msg: 'hello', name: 'Aresn' }"></div>
+</div>
 
 
-    <script src="../questions/vue.js"></script>
-    <script>
-        // 如果需要多个值，自定义指令也可以传入一个JavaScript对象字面量，只要是合法的JavaScript表达式都是可以的。
-        Vue.directive('test', {
-            bind: function(el, binding, vnode) {
-                console.log(binding.value.msg);
-                console.log(binding.value.name);
-            }
-        })
+<script src="../questions/vue.js"></script>
+<script>
+    // 如果需要多个值，自定义指令也可以传入一个JavaScript对象字面量，只要是合法的JavaScript表达式都是可以的。
+    Vue.directive('test', {
+        bind: function (el, binding, vnode) {
+            console.log(binding.value.msg);
+            console.log(binding.value.name);
+        }
+    })
 
-        var app = new Vue({
-            el: '#app',
-            data: {
-            }
-        })
-
+    var app = new Vue({
+        el: '#app',
+        data: {}
+    })
 
 
-
-    </script>
+</script>
 
 
 </body>

@@ -7,45 +7,42 @@
 
 <body>
 
-    <div id="app">
-        
-        <my-component :count="1"></my-component>
-    </div>
+<div id="app">
+
+    <my-component :count="1"></my-component>
+</div>
 
 
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-
-    <script>
-        Vue.component('my-component', {
-            name: 'my-component',
-            props: {
-                count: {
-                    type: Number,
-                    default: 1
-                }
-            },
-            template: '\
+<script>
+    Vue.component('my-component', {
+        name: 'my-component',
+        props: {
+            count: {
+                type: Number,
+                default: 1
+            }
+        },
+        template: '\
             <div class="child">\
                 <my-component\
                  :count="count + 1"\
                  v-if="count < 3"></my-component>\
                  <label>{{ count }}<label>\
             </div>',
-        })
+    })
 
-        var Child = {
-            template: '<div>局部注册组件的内容</div>'
-        }
-        var app = new Vue({
-            el: '#app'
-            
-        })
+    var Child = {
+        template: '<div>局部注册组件的内容</div>'
+    }
+    var app = new Vue({
+        el: '#app'
 
-
+    })
 
 
-    </script>
+</script>
 
 
 </body>

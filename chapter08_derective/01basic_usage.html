@@ -7,31 +7,28 @@
 
 <body>
 
-    <div id="app">
-        <input type="text" v-focus>
-    </div>
+<div id="app">
+    <input type="text" v-focus>
+</div>
 
 
-    <script src="../questions/vue.js"></script>
-    <script>
-        Vue.directive('focus', {
-            // 被绑定的元素在插入父节点的时候调用。
-            // 效果： 页面打开的时候，默认input框是被聚焦的，成为了可输入状态
-            inserted: function(el) {
-                el.focus();
-            }
-        })
+<script src="../questions/vue.js"></script>
+<script>
+    Vue.directive('focus', {
+        // 被绑定的元素在插入父节点的时候调用。
+        // 效果： 页面打开的时候，默认input框是被聚焦的，成为了可输入状态
+        inserted: function (el) {
+            el.focus();
+        }
+    })
 
-        var app = new Vue({
-            el: '#app',
-            data: {
-            }
-        })
-
+    var app = new Vue({
+        el: '#app',
+        data: {}
+    })
 
 
-
-    </script>
+</script>
 
 
 </body>

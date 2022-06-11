@@ -17,73 +17,73 @@ Vue.component('input-number', {
                         :disable = "currentValue >= max" > +</button >\
         </div>',
 // 定义参数的限制
-props: {
-    max: {
-        type: Number,
+    props: {
+        max: {
+            type: Number,
             default: Infinity
-    },
-    min: {
-        type: Number,
+        },
+        min: {
+            type: Number,
             default: -Infinity
-    },
-    value: {
-        type: Number,
+        },
+        value: {
+            type: Number,
             default: 0
-    }
-
-},
-data: function () {
-    return {
-        currentValue: this.value
-    }
-},
-watch: {
-    currentValue: function (val) {
-        this.$emit('input', val);
-        this.$emit('on-change', val)
-    },
-    value: function (val) {
-        this.updateValue(val);
-    }
-},
-
-methods: {
-    updateValue: function (val) {
-        if (val > this.max) val = this.max;
-        if (val < this.min) val = this.min;
-        this.currentValue = val;
-    },
-
-    handleDown: function (val) {
-        if (this.currentValue <= this.min) return;
-        this.currentValue -= 1;
-    },
-
-    handleUp: function (val) {
-        if (this.currentValue >= this.max) return;
-        this.currentValue += 1;
-    },
-    handleChange: function (event) {
-        var val = event.target.value.trim();
-        var max = this.max;
-        var min = this.min;
-
-        if (isValueNumber(val)) {
-            val = Number(val);
-            this.currentValue = val;
-            if (val > max) {
-                this.currentValue = max;
-            } else if (val < min) {
-                this.currentValue = min;
-            }
-
-        } else {
-            event.target.value = this.currentValue;
         }
-    }
-},
 
-mounted: function () {
-    this.updateValue(this.value);
-}
+    },
+    data: function () {
+        return {
+            currentValue: this.value
+        }
+    },
+    watch: {
+        currentValue: function (val) {
+            this.$emit('input', val);
+            this.$emit('on-change', val)
+        },
+        value: function (val) {
+            this.updateValue(val);
+        }
+    },
+
+    methods: {
+        updateValue: function (val) {
+            if (val > this.max) val = this.max;
+            if (val < this.min) val = this.min;
+            this.currentValue = val;
+        },
+
+        handleDown: function (val) {
+            if (this.currentValue <= this.min) return;
+            this.currentValue -= 1;
+        },
+
+        handleUp: function (val) {
+            if (this.currentValue >= this.max) return;
+            this.currentValue += 1;
+        },
+        handleChange: function (event) {
+            var val = event.target.value.trim();
+            var max = this.max;
+            var min = this.min;
+
+            if (isValueNumber(val)) {
+                val = Number(val);
+                this.currentValue = val;
+                if (val > max) {
+                    this.currentValue = max;
+                } else if (val < min) {
+                    this.currentValue = min;
+                }
+
+            } else {
+                event.target.value = this.currentValue;
+            }
+        }
+    },
+
+    mounted: function () {
+        this.updateValue(this.value);
+    }
 })

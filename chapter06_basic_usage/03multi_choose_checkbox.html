@@ -7,41 +7,39 @@
 
 <body>
 
-    <div id="app">
-        <input type="checkbox" v-model="checked" id="HTLM" value="HTML">
-        <label for="HTML">HTML</label>
-        <br>
+<div id="app">
+    <input type="checkbox" v-model="checked" id="HTLM" value="HTML">
+    <label for="HTML">HTML</label>
+    <br>
 
-        <input type="checkbox" v-model="checked" id="CSS" value="CSS">
-        <label for="CSS">CSS</label>
-        <br>
+    <input type="checkbox" v-model="checked" id="CSS" value="CSS">
+    <label for="CSS">CSS</label>
+    <br>
 
-        <input type="checkbox" v-model="checked" id="JavaScript" value="JavaScript">
-        <label for="JavaScript">JavaScript</label>
-        <br>
+    <input type="checkbox" v-model="checked" id="JavaScript" value="JavaScript">
+    <label for="JavaScript">JavaScript</label>
+    <br>
 
-        <input type="checkbox" v-model="checked" id="Java" value="Java">
-        <label for="Java">Java</label>
-        <br>
+    <input type="checkbox" v-model="checked" id="Java" value="Java">
+    <label for="Java">Java</label>
+    <br>
 
-        <p>选中的是： {{  checked }}</p>
-    </div>
-
-
-    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-    <script>
-        var app = new Vue({
-            el: '#app',
-            data: {
-                // 多选框,数据源是一个数组
-                checked: []
-            }
-        })
+    <p>选中的是： {{ checked }}</p>
+</div>
 
 
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            // 多选框,数据源是一个数组
+            checked: []
+        }
+    })
 
 
-    </script>
+</script>
 
 
 </body>

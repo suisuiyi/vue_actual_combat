@@ -7,31 +7,29 @@
 
 <body>
 
-    <div id="app">
-        {{ reverseText }}
-    </div>
+<div id="app">
+    {{ reverseText }}
+</div>
 
 
-    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-    <script>
-        var app = new Vue({
-            el: '#app',
-            data: {
-                text: '123,456,789'
-            },
-            //所有的计算属性以函数的形式写在Vue实例内的computed选项内，最终最终返回计算的结果。
-            computed: {
-                //
-                reverseText: function () {
-                    return this.text.split(',').reverse().join(',');
-                }
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            text: '123,456,789'
+        },
+        //所有的计算属性以函数的形式写在Vue实例内的computed选项内，最终最终返回计算的结果。
+        computed: {
+            //
+            reverseText: function () {
+                return this.text.split(',').reverse().join(',');
             }
-        })
+        }
+    })
 
 
-
-
-    </script>
+</script>
 
 
 </body>

@@ -7,34 +7,32 @@
 
 <body>
 
-    <div id="app">
-        <!-- 输出的是7， 因为这是将[1,2,3] 整体当成了一个字符串， 其长度是7 -->
-        <!-- 而使用v-bind属性可以将数据当成一个数组，所以取的是数组的大小。长度为3 -->
-        <!-- 如果是传递是字符串可以不使用v-bind。 如果要传递的数字、对象、数组，布尔需要使用v-bind -->
-        <my-component message="[1,2,3]"></my-component>
-        <my-component :message="[1,2,3]"></my-component>
+<div id="app">
+    <!-- 输出的是7， 因为这是将[1,2,3] 整体当成了一个字符串， 其长度是7 -->
+    <!-- 而使用v-bind属性可以将数据当成一个数组，所以取的是数组的大小。长度为3 -->
+    <!-- 如果是传递是字符串可以不使用v-bind。 如果要传递的数字、对象、数组，布尔需要使用v-bind -->
+    <my-component message="[1,2,3]"></my-component>
+    <my-component :message="[1,2,3]"></my-component>
 
-    </div>
-
-
-    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-    <script>
-        Vue.component('my-component', {
-            props: ['message'],
-            template: '<div> {{ message.length }} </div>'
-        })
-
-        var app = new Vue({
-            el: '#app',
-            data: {
-                text: '123,456,789'
-            }
-        })
+</div>
 
 
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script>
+    Vue.component('my-component', {
+        props: ['message'],
+        template: '<div> {{ message.length }} </div>'
+    })
+
+    var app = new Vue({
+        el: '#app',
+        data: {
+            text: '123,456,789'
+        }
+    })
 
 
-    </script>
+</script>
 
 
 </body>

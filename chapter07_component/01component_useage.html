@@ -7,54 +7,51 @@
 
 <body>
 
-    <div id="app">
-        <my-component></my-component>
+<div id="app">
+    <my-component></my-component>
 
-        <hr>
-        <label>局部注册组件如下：</label>
-        <my-component01></my-component01>
+    <hr>
+    <label>局部注册组件如下：</label>
+    <my-component01></my-component01>
 
-        <hr>
-        <label >table内使用组件</label>
-        <table>
-            <tbody is="my-component"></tbody>
-        </table>
+    <hr>
+    <label>table内使用组件</label>
+    <table>
+        <tbody is="my-component"></tbody>
+    </table>
 
-    </div>
+</div>
 
 
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-
-    <script>
-        // 先在实例创建前注册组件，然后再使用组件： 全局注册组件
-        Vue.component('my-component', {
-            template: '<p>{{ message }}</p>',
-            //在组件中使用，data是一个函数，需要将数据return出去。
-            data: function() {
-                return {
-                    message: '组件内容'
-                }
+<script>
+    // 先在实例创建前注册组件，然后再使用组件： 全局注册组件
+    Vue.component('my-component', {
+        template: '<p>{{ message }}</p>',
+        //在组件中使用，data是一个函数，需要将数据return出去。
+        data: function () {
+            return {
+                message: '组件内容'
             }
-        })
-
-        var Child = {
-            template: '<div>局部注册组件的内容</div>'
         }
-        var app = new Vue({
-            el: '#app',
-            data: {
-                text: '123,456,789'
-            },
-            components: {
-                'my-component01': Child
-            }
-        })
+    })
+
+    var Child = {
+        template: '<div>局部注册组件的内容</div>'
+    }
+    var app = new Vue({
+        el: '#app',
+        data: {
+            text: '123,456,789'
+        },
+        components: {
+            'my-component01': Child
+        }
+    })
 
 
-
-
-    </script>
+</script>
 
 
 </body>

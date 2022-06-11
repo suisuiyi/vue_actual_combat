@@ -6,39 +6,37 @@
 </head>
 
 <style>
-    [v-cloak]{
+    [v-cloak] {
         display: none;
     }
 </style>
 
 <body>
-    <!-- 开启chrome的弱网可以实现效果 -->
-    <!-- https://www.jianshu.com/p/f56cde007210?utm_source=oschina-app -->
-    <!--  当网速较慢、Vue.js文件还没加载完时，在页面上会显示{{ message }}的字样，直到Vue创建实例、编译模板时，DOM才会被替换，所以这个过程屏幕是有闪动的。只要加一句CSS就可以解决这个问题了 -->
-    <div id="app" v-cloak>
-        {{ reverseText }}
-    </div>
-
-    
+<!-- 开启chrome的弱网可以实现效果 -->
+<!-- https://www.jianshu.com/p/f56cde007210?utm_source=oschina-app -->
+<!--  当网速较慢、Vue.js文件还没加载完时，在页面上会显示{{ message }}的字样，直到Vue创建实例、编译模板时，DOM才会被替换，所以这个过程屏幕是有闪动的。只要加一句CSS就可以解决这个问题了 -->
+<div id="app" v-cloak>
+    {{ reverseText }}
+</div>
 
 
-    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
-    <script>
-        var app = new Vue({
-            el: '#app',
-            data: {
-                text: '123,456,789'
-            },
-            //所有的计算属性以函数的形式写在Vue实例内的computed选项内，最终最终返回计算的结果。
-            computed: {
-                //
-                reverseText: function () {
-                    return this.text.split(',').reverse().join(',');
-                }
+<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            text: '123,456,789'
+        },
+        //所有的计算属性以函数的形式写在Vue实例内的computed选项内，最终最终返回计算的结果。
+        computed: {
+            //
+            reverseText: function () {
+                return this.text.split(',').reverse().join(',');
             }
-        })
+        }
+    })
 
-    </script>
+</script>
 
 
 </body>

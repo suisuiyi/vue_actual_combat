@@ -7,95 +7,94 @@
 
 <body>
 
-    <div id="app">
-        <h2>vue的生命周期</h2>
-        <h4>{{ book }}</h4>
-        {{ date  }}
-        <br>
-        <span v-html="link"></span>
-        <br>
-        <!-- 使用v-pre 可以跳过对{{}}的编译。 -->
-        <span v-pre> {{  跳过编译双大括号  }}</span>   
-        <!-- {{}} 里支持使用简单的JavaScript做简单的运算比如 -->
-        <h5>{{ number / 10 }}</h5>
-        <h5>{{ isOK ? '确定' : '取消'}}</h5>
-        <h5>{{ text.split(',').reverse().join(',') }}</h5>
+<div id="app">
+    <h2>vue的生命周期</h2>
+    <h4>{{ book }}</h4>
+    {{ date }}
+    <br>
+    <span v-html="link"></span>
+    <br>
+    <!-- 使用v-pre 可以跳过对{{}}的编译。 -->
+    <span v-pre> {{  跳过编译双大括号  }}</span>
+    <!-- {{}} 里支持使用简单的JavaScript做简单的运算比如 -->
+    <h5>{{ number / 10 }}</h5>
+    <h5>{{ isOK ? '确定' : '取消'}}</h5>
+    <h5>{{ text.split(',').reverse().join(',') }}</h5>
 
-        <!-- Vue 过滤器： 在{{}} 大括号插值的尾部 添加一个 “|” ， 可以对数据进行过滤。比如转大写，货币格式化， 日期格式化等 -->
-        <!-- 过滤的规则是自定义的，给Vue实例添加选项 filters来设置的 -->
-        <!-- 过滤器应当用于简单的文本转换，当涉及复杂的数据变换，应该使用计算属性 -->
-        <!-- 过滤器支持串联、支持接收参数 -->
-        
-        {{ date | formatDate }}
+    <!-- Vue 过滤器： 在{{}} 大括号插值的尾部 添加一个 “|” ， 可以对数据进行过滤。比如转大写，货币格式化， 日期格式化等 -->
+    <!-- 过滤的规则是自定义的，给Vue实例添加选项 filters来设置的 -->
+    <!-- 过滤器应当用于简单的文本转换，当涉及复杂的数据变换，应该使用计算属性 -->
+    <!-- 过滤器支持串联、支持接收参数 -->
 
-    </div>
+    {{ date | formatDate }}
+
+</div>
 
 
-    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-    <script>
-        // 在vue的实例外创建一个JavaScript函数
-        // 定义一个padDate函数： 用于对于不足10的在前面补0
-        // 主要是针对 月份，日，小时，分，秒等
-        var padDate =  function(value) {
-           return value < 10 ? '0' + value : value;
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script>
+    // 在vue的实例外创建一个JavaScript函数
+    // 定义一个padDate函数： 用于对于不足10的在前面补0
+    // 主要是针对 月份，日，小时，分，秒等
+    var padDate = function (value) {
+        return value < 10 ? '0' + value : value;
+    }
+
+    var app = new Vue({
+        // el 挂在vue的实例
+        // data 是保存视图需要渲染的数据，可以赋个默认值
+        el: '#app',
+        data: {
+            a: 2,
+            book: "《Vue.js实战》",
+            date: new Date(),
+            link: '<a href="http://wwww.baidu.com"> 这是一个链接 </a>', //需要放在引号内
+            number: 1000,
+            isOK: true,
+            text: "123,456,789"
+
+
+        },
+
+        filters: {
+            formatDate: function (value) {
+                //这里的value就是要过滤的数据
+                var date = new Date(value);
+                var year = date.getFullYear();
+                var month = padDate(date.getMonth() + 1);  //为啥这里要使用padDate?  为啥要+1？
+                var day = padDate(date.getDay());
+
+                var hours = padDate(date.getHours());
+                var minutes = padDate(date.getMinutes());
+                var seconds = padDate(date.getSeconds());
+
+                return year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds;
+            }
+        },
+
+        created: function () {
+            console.log(this.a)
+        },
+
+        mounted: function () {
+            console.log(this.$el);
+            var _this = this;
+            this.timer = setInterval(function () {
+                _this.date = new Date(); //修改数据
+            }, 1000)
+        },
+
+        beforeDestroy: function () {
+            if (this.timer) {
+                clearInterval(this.timer)
+                // 在Vue实例销毁前，清除我们的定时器
+            }
         }
 
-        var app = new Vue({
-            // el 挂在vue的实例
-            // data 是保存视图需要渲染的数据，可以赋个默认值
-            el: '#app',
-            data: {
-                a: 2,
-                book: "《Vue.js实战》",
-                date: new Date(),
-                link: '<a href="http://wwww.baidu.com"> 这是一个链接 </a>', //需要放在引号内
-                number: 1000,
-                isOK: true,
-                text: "123,456,789"
+    })
 
 
-            },
-
-            filters: {
-                formatDate: function (value) {
-                    //这里的value就是要过滤的数据
-                    var date = new Date(value);
-                    var year = date.getFullYear();
-                    var month = padDate(date.getMonth() + 1);  //为啥这里要使用padDate?  为啥要+1？
-                    var day = padDate(date.getDay());
-
-                    var hours = padDate(date.getHours());
-                    var minutes = padDate(date.getMinutes());
-                    var seconds = padDate(date.getSeconds());
-
-                    return year + '-' + month + '-' + day  + ' ' + hours + ':' + minutes + ':' + seconds;
-                }
-            },
-
-            created: function () {
-                console.log(this.a)
-            },
-
-            mounted: function () {
-                console.log(this.$el);
-                var _this = this;
-                this.timer = setInterval(function () {
-                    _this.date = new Date(); //修改数据
-                }, 1000)
-            },
-
-            beforeDestroy: function() {
-                if(this.timer) {
-                    clearInterval(this.timer)
-                    // 在Vue实例销毁前，清除我们的定时器
-                }
-            }
-
-            })
-
-    
-
-    </script>
+</script>
 
 
 </body>

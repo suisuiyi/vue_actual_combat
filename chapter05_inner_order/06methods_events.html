@@ -7,36 +7,34 @@
 
 <body>
 
-    <div id="app">
-        点击次数： {{counter}}
-        <button @click="counter++">点击按钮+1</button>
-        <button @click="handleAdd(10)">点击按钮+10</button>
-        <a href="http://www.apple.com" @click="handleClick('禁止打开', $event)">这是一个连接</a>
-    </div>
+<div id="app">
+    点击次数： {{counter}}
+    <button @click="counter++">点击按钮+1</button>
+    <button @click="handleAdd(10)">点击按钮+10</button>
+    <a href="http://www.apple.com" @click="handleClick('禁止打开', $event)">这是一个连接</a>
+</div>
 
 
-    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-    <script>
-        var app = new Vue({
-            el: '#app',
-            data: {
-                counter: 0
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            counter: 0
+        },
+        methods: {
+            handleAdd: function (count) {
+                this.counter += count;
             },
-            methods: {
-                handleAdd: function(count) {
-                    this.counter += count;
-                },
-                handleClick: function(message, event) {
-                    event.preventDefault();
-                    window.alert(message);
-                }
+            handleClick: function (message, event) {
+                event.preventDefault();
+                window.alert(message);
             }
-        })
+        }
+    })
 
 
-
-
-    </script>
+</script>
 
 
 </body>

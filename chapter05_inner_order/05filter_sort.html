@@ -7,60 +7,58 @@
 
 <body>
 
-    <div id="app">
-        <template v-for="book in filterBooks">
-            <li>书名： {{ book.name }} 作者： {{ book.author }} </li>
-        </template>
+<div id="app">
+    <template v-for="book in filterBooks">
+        <li>书名： {{ book.name }} 作者： {{ book.author }}</li>
+    </template>
 
-        <hr>
+    <hr>
 
-        <template v-for="book in sortedBooks">
-            <li>书名： {{ book.name }} 作者： {{ book.author }} </li>
-        </template>
-    </div>
+    <template v-for="book in sortedBooks">
+        <li>书名： {{ book.name }} 作者： {{ book.author }}</li>
+    </template>
+</div>
 
 
-    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-    <script>
-        var app = new Vue({
-            el: '#app',
-            data: {
-                books: [
-                    {
-                        name: '《Vue.js实战》',
-                        author: '梁灏'
-                    },
-                    {
-                        name: '《JavaScript语言精粹》',
-                        author: 'Douglas Crockford'
-                    },
-                    {
-                        name: '《JavaScript高级程序设计》',
-                        author: 'Nicholas C.Zakas'
-                    }
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            books: [
+                {
+                    name: '《Vue.js实战》',
+                    author: '梁灏'
+                },
+                {
+                    name: '《JavaScript语言精粹》',
+                    author: 'Douglas Crockford'
+                },
+                {
+                    name: '《JavaScript高级程序设计》',
+                    author: 'Nicholas C.Zakas'
+                }
 
-                ]
+            ]
+        },
+        //所有的计算属性以函数的形式写在Vue实例内的computed选项内，最终最终返回计算的结果。
+        computed: {
+            filterBooks: function () {
+                return this.books.filter(function (book) {
+                    return book.name.match(/JavaScript/);
+                });
             },
-            //所有的计算属性以函数的形式写在Vue实例内的computed选项内，最终最终返回计算的结果。
-            computed: {
-               filterBooks: function() {
-                   return this.books.filter(function(book){
-                       return book.name.match(/JavaScript/);
-                   });
-               },
 
-               sortedBooks: function() {
-                   return this.books.sort(function(a, b) {
-                       return a.name.length < a.name.length;
-                   })
-               }
+            sortedBooks: function () {
+                return this.books.sort(function (a, b) {
+                    return a.name.length < a.name.length;
+                })
             }
-        })
+        }
+    })
 
 
-
-
-    </script>
+</script>
 
 
 </body>

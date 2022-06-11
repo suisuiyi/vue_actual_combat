@@ -3,39 +3,36 @@
 <head>
     <meta charset="utf-8">
     <title>作用域插槽</title>
-     
+
 </head>
 
 <body>
 
-    <div id="app">
-        <child-component>
-            <!-- scope=props，这里的props只是一个临时变量，template内可以通过props.msg来访问子组件插槽里的数据msg -->
-            <template scope="props">
-                <p>来自父组件的内容</p>
-                <p>{{ props.msg }}</p>
-            </template>
-        </child-component>
-
-       
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-    <script>
-        Vue.component('child-component', {
-            template: '<div class="container"><slot msg="来自子组件的内容"></slot></div>'
-        });
+<div id="app">
+    <child-component>
+        <!-- scope=props，这里的props只是一个临时变量，template内可以通过props.msg来访问子组件插槽里的数据msg -->
+        <template scope="props">
+            <p>来自父组件的内容</p>
+            <p>{{ props.msg }}</p>
+        </template>
+    </child-component>
 
 
+</div>
 
-        var app = new Vue({
-            el: '#app'
-        })
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script>
+    Vue.component('child-component', {
+        template: '<div class="container"><slot msg="来自子组件的内容"></slot></div>'
+    });
 
 
+    var app = new Vue({
+        el: '#app'
+    })
 
 
-    </script>
+</script>
 
 
 </body>
